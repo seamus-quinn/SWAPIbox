@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import StarWarsRepo from '../Cleaner/cleaner'
-import filmsData from '../data/filmsData'
+import StarWarsRepo from '../../Cleaner/cleaner'
+import filmsData from '../../data/filmsData'
 import './App.css';
-import OpeningCredits from '../OpeningCredits/OpeningCredits'
+import OpeningCredits from '../../StatelessComponents/OpeningCredits/OpeningCredits';
+import Controls from '../../StatelessComponents/Controls/Controls';
+import CardContainer from '../../StatelessComponents/CardContainer/CardContainer';
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +12,13 @@ class App extends Component {
     this.state = {
       starWarsRepo: new StarWarsRepo,
       openingCrawl: null,
-      isLoading: true
+      isLoading: true,
+      favorites: 0,
+      displayType: {
+        people: false,
+        planets: false,
+        vehicles: false
+      }
     }
   }
 
@@ -27,6 +35,8 @@ class App extends Component {
           <h1 className="App-title">Star Trek :: Live Long and Prosper</h1>
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} />
+        <Controls favorites={this.state.favorites} />
+        <CardContainer />
       </div>
     );
   }
