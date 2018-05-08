@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Controls = ({ favorites, fetchPeopleData }) => {
+const Controls = ({ favorites, setData }) => {
   return(
     <div>
       <p>Favorites {favorites}</p>
-      <button onClick={fetchPeopleData}>PEOPLE</button>
+      <button onClick={setData}>PEOPLE</button>
       <button>PLANETS</button>
       <button>VEHICLES</button>
     </div>
