@@ -10,7 +10,6 @@ const OpeningCredits = ({ openingCrawl }) => {
   )
 } else {
   let randomIndex = Math.floor(Math.random() * Math.floor(openingCrawl.length))
-  console.log(randomIndex)
   return(
     <div>
       <p>{openingCrawl[randomIndex].openingText}</p>
