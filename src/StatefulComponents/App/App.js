@@ -22,10 +22,17 @@ class App extends Component {
     }
   }
 
+
   componentDidMount() {
+    const url = 'https://swapi.co/api/films/';
     const starWarsRepo = this.state.starWarsRepo;
-    const openingCrawl = starWarsRepo.filmCleaner(filmsData)
-    this.setState({ openingCrawl, isLoading: false })
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const openingCrawl = starWarsRepo.filmCleaner(data)
+        this.setState({ openingCrawl, isLoading: false })
+      })
   }
 
   render() {
