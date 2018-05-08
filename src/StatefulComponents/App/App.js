@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StarWarsRepo from '../../Cleaner/cleaner'
+import DataCleaner from '../../Cleaner/cleaner'
 import filmsData from '../../data/filmsData'
 import './App.css';
 import OpeningCredits from '../../StatelessComponents/OpeningCredits/OpeningCredits';
@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      starWarsRepo: new StarWarsRepo,
+      dataCleaner: new DataCleaner,
       openingCrawl: null,
       isLoading: true,
       favorites: 0,
@@ -20,38 +20,19 @@ class App extends Component {
 
   componentDidMount() {
     const url = 'https://swapi.co/api/films/';
-    const starWarsRepo = this.state.starWarsRepo;
+    const dataCleaner = this.state.dataCleaner;
 
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        const openingCrawl = starWarsRepo.filmCleaner(data)
+        const openingCrawl = dataCleaner.filmCleaner(data)
         this.setState({ openingCrawl, isLoading: false })
       })
   }
 
-  fetchPeopleData = () => {
-    const url = 'https://swapi.co/api/people/'
-    fetch(url)
-      .then(response => response.json())
-      .then(data => this.fetchHomeWorld(data.results))
-      .then(people => this.setState({people}))
-  }
-
-  fetchHomeWorld = (data) => {
-    const unresolvedData = data.map(person => {
-      return fetch(person.homeworld)
-        .then(response => response.json())
-        .then(data => {
-          return {
-            name: person.name,
-            homeworld: data.name,
-            species: null,
-            homeworldPop: data.population
-          }
-        })
-    })
-    return Promise.all(unresolvedData)
+  setData = async () => {
+    const people = await this.state.dataCleaner.fetchPeopleData()
+    this.setState({ people })
   }
 
   render() {
@@ -61,7 +42,7 @@ class App extends Component {
           <h1 className="App-title">Star Trek :: Live Long and Prosper</h1>
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} />
-        <Controls favorites={this.state.favorites} fetchPeopleData={this.fetchPeopleData}/>
+        <Controls favorites={this.state.favorites} setData={this.setData}/>
         <CardContainer />
       </div>
     );
