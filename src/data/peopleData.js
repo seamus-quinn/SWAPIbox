@@ -276,3 +276,5 @@ const peopleData = {
     }
   ]
 }
+
+//https://swapi.co/api/people/

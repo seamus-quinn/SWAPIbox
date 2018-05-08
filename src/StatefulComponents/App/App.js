@@ -14,14 +14,9 @@ class App extends Component {
       openingCrawl: null,
       isLoading: true,
       favorites: 0,
-      displayType: {
-        people: false,
-        planets: false,
-        vehicles: false
-      }
+      people: []
     }
   }
-
 
   componentDidMount() {
     const url = 'https://swapi.co/api/films/';
@@ -35,6 +30,30 @@ class App extends Component {
       })
   }
 
+  fetchPeopleData = () => {
+    const url = 'https://swapi.co/api/people/'
+    fetch(url)
+      .then(response => response.json())
+      .then(data => this.fetchHomeWorld(data.results))
+      .then(people => this.setState({people}))
+  }
+
+  fetchHomeWorld = (data) => {
+    const unresolvedData = data.map(person => {
+      return fetch(person.homeworld)
+        .then(response => response.json())
+        .then(data => {
+          return {
+            name: person.name,
+            homeworld: data.name,
+            species: null,
+            homeworldPop: data.population
+          }
+        })
+    })
+    return Promise.all(unresolvedData)
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,7 +61,7 @@ class App extends Component {
           <h1 className="App-title">Star Trek :: Live Long and Prosper</h1>
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} />
-        <Controls favorites={this.state.favorites} />
+        <Controls favorites={this.state.favorites} fetchPeopleData={this.fetchPeopleData}/>
         <CardContainer />
       </div>
     );
