@@ -14,7 +14,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataCleaner: new DataCleaner,
       openingCrawl: null,
       isLoading: true,
       favorites: 0,
@@ -24,10 +23,8 @@ class App extends Component {
 
   componentDidMount() {
     const url = 'https://swapi.co/api/films/';
-    const dataCleaner = this.state.dataCleaner;
     
-    fetch(url)
-    .then(response => response.json())
+    api.parse(url)
     .then(data => dataCleaner.filmCleaner(data))
     .then(openingCrawls => {
       const randomIndex = Math.floor(Math.random() * Math.floor(openingCrawls.length));
@@ -37,7 +34,8 @@ class App extends Component {
   }
 
   setData = async () => {
-    const people = await this.state.dataCleaner.fetchPeopleData()
+    const peopleUrl = 'https://swapi.co/api/people/'
+    const people = await api.fetchPeopleData(peopleUrl)
     this.setState({ people })
   }
 
@@ -49,7 +47,7 @@ class App extends Component {
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
         <Controls favorites={this.state.favorites} setData={this.setData}/>
-        <CardContainer />
+        <CardContainer people={this.state.people}/>
       </div>
     );
   }

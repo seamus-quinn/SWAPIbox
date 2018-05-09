@@ -1,6 +1,5 @@
 export default class API {
   constructor(url) {
-    this.url = url;
   }
 
   parse(url) {
@@ -30,4 +29,3 @@ export default class API {
   }
 }
 
-const peopleUrl = 'https://swapi.co/api/people/'
