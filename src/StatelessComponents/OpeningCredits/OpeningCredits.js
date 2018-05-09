@@ -9,12 +9,12 @@ const OpeningCredits = ({ openingCrawl }) => {
     </div>
   )
 } else {
-  let randomIndex = Math.floor(Math.random() * Math.floor(openingCrawl.length))
+  
   return(
     <div>
-      <p>{openingCrawl[randomIndex].openingText}</p>
-      <p>{openingCrawl[randomIndex].title}</p>
-      <p>{openingCrawl[randomIndex].releaseDate}</p>
+      <p>{openingCrawl.openingText}</p>
+      <p>{openingCrawl.title}</p>
+      <p>{openingCrawl.releaseDate}</p>
     </div>
   )
 }

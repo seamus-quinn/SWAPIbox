@@ -5,6 +5,10 @@ import './App.css';
 import OpeningCredits from '../../StatelessComponents/OpeningCredits/OpeningCredits';
 import Controls from '../../StatelessComponents/Controls/Controls';
 import CardContainer from '../../StatelessComponents/CardContainer/CardContainer';
+import API from '../../API/api';
+
+const api = new API;
+const dataCleaner = new DataCleaner;
 
 class App extends Component {
   constructor(props) {
@@ -21,13 +25,15 @@ class App extends Component {
   componentDidMount() {
     const url = 'https://swapi.co/api/films/';
     const dataCleaner = this.state.dataCleaner;
-
+    
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const openingCrawl = dataCleaner.filmCleaner(data)
-        this.setState({ openingCrawl, isLoading: false })
-      })
+    .then(response => response.json())
+    .then(data => dataCleaner.filmCleaner(data))
+    .then(openingCrawls => {
+      const randomIndex = Math.floor(Math.random() * Math.floor(openingCrawls.length));
+      const openingCrawl = openingCrawls[randomIndex];
+      this.setState({ openingCrawl, isLoading: false})
+    })
   }
 
   setData = async () => {
@@ -41,7 +47,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Star Trek :: Live Long and Prosper</h1>
         </header>
-        <OpeningCredits openingCrawl={this.state.openingCrawl} />
+        <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
         <Controls favorites={this.state.favorites} setData={this.setData}/>
         <CardContainer />
       </div>
