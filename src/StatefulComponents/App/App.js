@@ -5,9 +5,8 @@ import './App.css';
 import OpeningCredits from '../../StatelessComponents/OpeningCredits/OpeningCredits';
 import Controls from '../../StatelessComponents/Controls/Controls';
 import CardContainer from '../../StatelessComponents/CardContainer/CardContainer';
-import API from '../../API/api';
+import { parse, fetchPeopleData, fetchHomeworld } from '../../API/api';
 
-const api = new API;
 const dataCleaner = new DataCleaner;
 
 class App extends Component {
@@ -24,7 +23,7 @@ class App extends Component {
   componentDidMount() {
     const url = 'https://swapi.co/api/films/';
     
-    api.parse(url)
+    parse(url)
     .then(data => dataCleaner.filmCleaner(data))
     .then(openingCrawls => {
       const randomIndex = Math.floor(Math.random() * Math.floor(openingCrawls.length));
@@ -35,7 +34,7 @@ class App extends Component {
 
   setData = async () => {
     const peopleUrl = 'https://swapi.co/api/people/'
-    const people = await api.fetchPeopleData(peopleUrl)
+    const people = await fetchPeopleData(peopleUrl)
     this.setState({ people })
   }
 
