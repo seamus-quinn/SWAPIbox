@@ -57,7 +57,7 @@ class App extends Component {
           <h1 className="App-title">Star Trek :: Live Long and Prosper</h1>
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
-        <Controls setData={this.setData}/>
+        <Controls favorites={this.state.favorites} setData={this.setData}/>
         <CardContainer people={this.state.people} addToFavorites={this.addToFavorites}/>
       </div>
     );
