@@ -12,7 +12,7 @@ const CardContainer = ({ people }) => {
       name={person.name}
       homeworld={person.homeworld}
       species={person.species}
-      homeworldPop={person.homeworldPop}
+      population={person.population}
       key={index}
       />
     })

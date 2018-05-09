@@ -7,8 +7,6 @@ import Controls from '../../StatelessComponents/Controls/Controls';
 import CardContainer from '../../StatelessComponents/CardContainer/CardContainer';
 import { parse, fetchPeopleData, fetchHomeworld } from '../../API/api';
 
-const dataCleaner = new DataCleaner;
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,25 +14,33 @@ class App extends Component {
       openingCrawl: null,
       isLoading: true,
       favorites: 0,
-      people: []
+      people: [],
+      favorites: []
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const url = 'https://swapi.co/api/films/';
     
-    parse(url)
-    .then(data => dataCleaner.filmCleaner(data))
-    .then(openingCrawls => {
-      const randomIndex = Math.floor(Math.random() * Math.floor(openingCrawls.length));
-      const openingCrawl = openingCrawls[randomIndex];
-      this.setState({ openingCrawl, isLoading: false})
-    })
+    const response = await fetch(url);
+    const data = await response.json();
+    const cleanedData = await data.results.map(({
+      title,
+      opening_crawl: openingText,
+      release_date: releaseDate
+    }) => ({
+      title,
+      openingText,
+      releaseDate
+    }))
+    const randomIndex = Math.floor(Math.random() * Math.floor(cleanedData.length));
+    const openingCrawl = cleanedData[randomIndex];
+    this.setState({ openingCrawl, isLoading: false })
+  
   }
 
   setData = async () => {
-    const peopleUrl = 'https://swapi.co/api/people/'
-    const people = await fetchPeopleData(peopleUrl)
+    const people = await fetchPeopleData()
     this.setState({ people })
   }
 
