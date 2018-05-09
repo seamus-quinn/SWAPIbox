@@ -47,7 +47,7 @@ class App extends Component {
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
         <Controls favorites={this.state.favorites} setData={this.setData}/>
-        <CardContainer />
+        <CardContainer people={this.state.people}/>
       </div>
     );
   }
