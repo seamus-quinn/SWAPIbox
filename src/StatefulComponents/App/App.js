@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DataCleaner from '../../Cleaner/cleaner'
 import filmsData from '../../data/filmsData'
 import './App.css';
 import OpeningCredits from '../../StatelessComponents/OpeningCredits/OpeningCredits';
@@ -36,7 +35,14 @@ class App extends Component {
     const randomIndex = Math.floor(Math.random() * Math.floor(cleanedData.length));
     const openingCrawl = cleanedData[randomIndex];
     this.setState({ openingCrawl, isLoading: false })
-  
+  }
+
+  addToFavorites = (name) => {
+    const favorite = this.state.people.find(person => person.name === name)
+    console.log(favorite)
+    const favorites = [...this.state.favorites, favorite]
+    console.log(favorites)
+    this.setState({ favorites })
   }
 
   setData = async () => {
@@ -51,8 +57,8 @@ class App extends Component {
           <h1 className="App-title">Star Trek :: Live Long and Prosper</h1>
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
-        <Controls favorites={this.state.favorites} setData={this.setData}/>
-        <CardContainer people={this.state.people}/>
+        <Controls setData={this.setData}/>
+        <CardContainer people={this.state.people} addToFavorites={this.addToFavorites}/>
       </div>
     );
   }
