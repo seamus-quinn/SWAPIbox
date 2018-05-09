@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../Card/Card'
 
-const CardContainer = ({ people }) => {
+const CardContainer = ({ people, addToFavorites }) => {
   if (!people.length){
     return (
       <p>Please Select a Category</p>
@@ -13,10 +13,10 @@ const CardContainer = ({ people }) => {
       homeworld={person.homeworld}
       species={person.species}
       population={person.population}
-      key={index}
+      key={person.name}
+      addToFavorites={addToFavorites}
       />
     })
-    console.log(cards)
     return(
       <div>
         {cards}
