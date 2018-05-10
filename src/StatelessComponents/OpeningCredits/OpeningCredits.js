@@ -5,7 +5,7 @@ const OpeningCredits = ({ openingCrawl }) => {
   if (openingCrawl === null) {
   return (
     <div>
-      <p>Loading...</p>
+      <img src="../../images/loading.gif" />
     </div>
   )
 } else {
