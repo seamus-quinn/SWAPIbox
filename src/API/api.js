@@ -1,8 +1,3 @@
-const parse = (url) => {
-  return fetch(url)
-    .then(response => response.json())
-}
-
 const fetchPeopleData = async () => {
   const url = 'https://swapi.co/api/people/'
   const response = await fetch(url);
@@ -34,9 +29,24 @@ const fetchSpecies = async (url) => {
   return species.name;
 }
 
+const fetchVehicleData = async () => {
+  const url = 'https://swapi.co/api/vehicles/';
+  const response = await fetch(url);
+  const data = await response.json();
+  const vehicles = data.results.map(vehicle => {
+    return {
+      name: vehicle.name,
+      model: vehicle.model,
+      class: vehicle.vehicle_class,
+      passengers: vehicle.passengers
+    }
+  })
+  return vehicles;
+}
+
 
 export {
-  parse,
   fetchPeopleData,
-  fetchHomeWorld
+  fetchHomeWorld,
+  fetchVehicleData
 }
