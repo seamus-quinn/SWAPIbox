@@ -44,9 +44,36 @@ const fetchVehicleData = async () => {
   return vehicles;
 }
 
+const fetchPlanetData = async () => {
+  const url = 'https://swapi.co/api/planets/'
+  const response = await fetch(url);
+  const data = await response.json();
+  const planets = await data.results.map( async planet => {
+    const residents = await fetchResidents(planet.residents)
+    return {
+      name: planet.name,
+      terrain: planet.terrain,
+      population: planet.population,
+      climate: planet.climate,
+      residents: residents
+    }
+  })
+  return Promise.all(planets)
+}
+
+const fetchResidents = async (array) => {
+  const residents = await array.map( async residentURL => {
+    const response = await fetch(residentURL);
+    const data = await response.json();
+    return data.name;
+  })
+  return Promise.all(residents);
+}
+
 
 export {
   fetchPeopleData,
   fetchHomeWorld,
-  fetchVehicleData
+  fetchVehicleData,
+  fetchPlanetData
 }

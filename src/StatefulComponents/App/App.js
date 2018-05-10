@@ -4,7 +4,7 @@ import './App.css';
 import OpeningCredits from '../../StatelessComponents/OpeningCredits/OpeningCredits';
 import Controls from '../../StatelessComponents/Controls/Controls';
 import CardContainer from '../../StatelessComponents/CardContainer/CardContainer';
-import { fetchPeopleData, fetchHomeworld, fetchVehicleData } from '../../API/api';
+import { fetchPeopleData, fetchHomeworld, fetchVehicleData, fetchPlanetData } from '../../API/api';
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +15,8 @@ class App extends Component {
       favorites: 0,
       people: [],
       favorites: [],
-      vehicles: []
+      vehicles: [],
+      planets: [],
     }
   }
 
@@ -60,6 +61,13 @@ class App extends Component {
     }
   }
 
+  setPlanetData = async () => {
+    if(!this.state.planets.length) {
+      const planets = await fetchPlanetData();
+      this.setState({ planets })
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -71,6 +79,7 @@ class App extends Component {
           favorites={this.state.favorites} 
           setPeopleData={this.setPeopleData}
           setVehicleData={this.setVehicleData}
+          setPlanetData={this.setPlanetData}
         />
         <CardContainer 
           people={this.state.people} 
