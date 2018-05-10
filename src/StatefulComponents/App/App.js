@@ -14,7 +14,8 @@ class App extends Component {
       isLoading: true,
       favorites: 0,
       people: [],
-      favorites: []
+      favorites: [],
+      vehicles: []
     }
   }
 
@@ -46,14 +47,17 @@ class App extends Component {
   }
 
   setPeopleData = async () => {
-    const people = await fetchPeopleData()
-    this.setState({ people })
+    if(!this.state.people.length) {
+      const people = await fetchPeopleData()
+      this.setState({ people })
+    }
   }
 
   setVehicleData = async () => {
-    const vehicles = await fetchVehicleData();
-    this.setState({ vehicles })
-    console.log('fuck yeah')
+    if(!this.state.vehicles.length) {
+      const vehicles = await fetchVehicleData();
+      this.setState({ vehicles })
+    }
   }
 
   render() {
