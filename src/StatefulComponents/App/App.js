@@ -64,7 +64,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Star Trek :: Live Long and Prosper</h1>
+          <h1 className="App-title">SWAPIbox :: Live Long and Prosper</h1>
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
         <Controls 
