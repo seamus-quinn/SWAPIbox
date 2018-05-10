@@ -4,7 +4,7 @@ import './App.css';
 import OpeningCredits from '../../StatelessComponents/OpeningCredits/OpeningCredits';
 import Controls from '../../StatelessComponents/Controls/Controls';
 import CardContainer from '../../StatelessComponents/CardContainer/CardContainer';
-import { parse, fetchPeopleData, fetchHomeworld } from '../../API/api';
+import { fetchPeopleData, fetchHomeworld, fetchVehicleData } from '../../API/api';
 
 class App extends Component {
   constructor(props) {
@@ -45,9 +45,15 @@ class App extends Component {
     this.setState({ favorites })
   }
 
-  setData = async () => {
+  setPeopleData = async () => {
     const people = await fetchPeopleData()
     this.setState({ people })
+  }
+
+  setVehicleData = async () => {
+    const vehicles = await fetchVehicleData();
+    this.setState({ vehicles })
+    console.log('fuck yeah')
   }
 
   render() {
@@ -57,8 +63,15 @@ class App extends Component {
           <h1 className="App-title">Star Trek :: Live Long and Prosper</h1>
         </header>
         <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
-        <Controls favorites={this.state.favorites} setData={this.setData}/>
-        <CardContainer people={this.state.people} addToFavorites={this.addToFavorites}/>
+        <Controls 
+          favorites={this.state.favorites} 
+          setPeopleData={this.setPeopleData}
+          setVehicleData={this.setVehicleData}
+        />
+        <CardContainer 
+          people={this.state.people} 
+          addToFavorites={this.addToFavorites}
+        />
       </div>
     );
   }
