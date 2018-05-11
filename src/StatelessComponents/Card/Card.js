@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Card = ({name, homeworld, species, population, addToFavorites }) => {
+const Card = ({name, dataTwo, dataThree, dataFour, addToFavorites }) => {
   return(
     <div>
       <h1>{name}</h1>
-      <p>{homeworld}</p>
-      <p>{species}</p>
-      <p>{population}</p>
+      <p>{dataTwo}</p>
+      <p>{dataThree}</p>
+      <p>{dataFour}</p>
       <button onClick={() => addToFavorites(name)}>Favorite</button>
     </div>
   )
