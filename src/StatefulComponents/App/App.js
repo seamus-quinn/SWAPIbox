@@ -17,6 +17,7 @@ class App extends Component {
       favorites: [],
       vehicles: [],
       planets: [],
+      display: 0,
     }
   }
 
@@ -50,22 +51,25 @@ class App extends Component {
   setPeopleData = async () => {
     if(!this.state.people.length) {
       const people = await fetchPeopleData()
-      this.setState({ people })
+      this.setState({ people, display: 'people' })
     }
+    this.setState({ display: 'people' })
   }
 
   setVehicleData = async () => {
     if(!this.state.vehicles.length) {
       const vehicles = await fetchVehicleData();
-      this.setState({ vehicles })
+      this.setState({ vehicles, display: 'vehicles' })
     }
+    this.setState({ display: 'vehicles' })
   }
 
   setPlanetData = async () => {
     if(!this.state.planets.length) {
       const planets = await fetchPlanetData();
-      this.setState({ planets })
+      this.setState({ planets, display: 'planets' })
     }
+    this.setState({ display: 'planets' })
   }
 
   render() {
@@ -82,8 +86,11 @@ class App extends Component {
           setPlanetData={this.setPlanetData}
         />
         <CardContainer 
-          people={this.state.people} 
+          people={this.state.people}
+          vehicles={this.state.vehicles}
+          planets={this.state.planets} 
           addToFavorites={this.addToFavorites}
+          display={this.state.display}
         />
       </div>
     );
