@@ -49,14 +49,12 @@ class App extends Component {
       this.setState({ favorites })
     } else {
       for (let i = 0; i < favorites.length; i++) {
-        if (favorites[i].name === name) {
+        if (favorites[i].name === newFavorite.name) {
           favorites.splice(i, 1)
           this.setState({ favorites })
         } else {
-          favorites.push(newFavorite)
-          console.log(favorites)
-          console.log('you did it')
-          this.setState({ favorites })
+          const newFavorites = [...favorites, newFavorite]
+          this.setState({ favorites: newFavorites })
         }
       }
     }
