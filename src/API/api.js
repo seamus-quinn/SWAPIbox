@@ -7,6 +7,7 @@ const fetchPeopleData = async () => {
     const species = await fetchSpecies(person.species)
     return {
       name: person.name,
+      type: 'people',
       ...homeworld,
       species
     }
@@ -38,7 +39,8 @@ const fetchVehicleData = async () => {
       name: vehicle.name,
       model: vehicle.model,
       class: vehicle.vehicle_class,
-      passengers: vehicle.passengers
+      passengers: vehicle.passengers,
+      type: 'vehicles'
     }
   })
   return vehicles;
@@ -55,7 +57,8 @@ const fetchPlanetData = async () => {
       terrain: planet.terrain,
       population: planet.population,
       climate: planet.climate,
-      residents: residents
+      residents: residents,
+      type: 'planets'
     }
   })
   return Promise.all(planets)

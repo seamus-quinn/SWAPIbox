@@ -17,7 +17,7 @@ class App extends Component {
       favorites: [],
       vehicles: [],
       planets: [],
-      display: 0,
+      display: null,
     }
   }
 
@@ -45,7 +45,12 @@ class App extends Component {
     const favorite = this.state[display].find(thing => thing.name === name)
     const favorites = [...this.state.favorites, favorite]
     console.log(favorites)
-    this.setState({ favorites })
+    this.setState({ favorites, })
+  }
+
+  displayFavorites = () => {
+    console.log('sup')
+    this.setState({display: 'favorites'})
   }
 
   setPeopleData = async () => {
@@ -84,6 +89,7 @@ class App extends Component {
           setPeopleData={this.setPeopleData}
           setVehicleData={this.setVehicleData}
           setPlanetData={this.setPlanetData}
+          displayFavorites={this.displayFavorites}
         />
         <CardContainer 
           people={this.state.people}
@@ -91,6 +97,7 @@ class App extends Component {
           planets={this.state.planets} 
           addToFavorites={this.addToFavorites}
           display={this.state.display}
+          favorites={this.state.favorites}
         />
       </div>
     );
