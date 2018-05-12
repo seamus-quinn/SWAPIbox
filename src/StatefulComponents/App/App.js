@@ -41,15 +41,28 @@ class App extends Component {
   }
 
   addToFavorites = (name, display) => {
-    console.log(this.state[display])
-    const favorite = this.state[display].find(thing => thing.name === name)
-    const favorites = [...this.state.favorites, favorite]
-    console.log(favorites)
-    this.setState({ favorites, })
+    const newFavorite = this.state[display].find(thing => thing.name === name)
+    const favorites = this.state.favorites;
+
+    if(!favorites.length) {
+      favorites.push(newFavorite)
+      this.setState({ favorites })
+    } else {
+      for (let i = 0; i < favorites.length; i++) {
+        if (favorites[i].name === name) {
+          favorites.splice(i, 1)
+          this.setState({ favorites })
+        } else {
+          favorites.push(newFavorite)
+          console.log(favorites)
+          console.log('you did it')
+          this.setState({ favorites })
+        }
+      }
+    }
   }
 
   displayFavorites = () => {
-    console.log('sup')
     this.setState({display: 'favorites'})
   }
 
