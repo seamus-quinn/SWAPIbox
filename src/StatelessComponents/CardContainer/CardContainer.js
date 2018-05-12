@@ -10,10 +10,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
       return people.map((person, index) => {
         return (
           <PeopleCard
-            name={person.name}
-            homeworld={person.homeworld}
-            species={person.species}
-            homeworldPop={person.population}
+            person={person}
             addToFavorites={addToFavorites}
             display={display}
           />
@@ -23,10 +20,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
       return vehicles.map((vehicle, index) => {
         return (
           <VehicleCard
-            name={vehicle.name}
-            model={vehicle.model}
-            vehicleClass={vehicle.class}
-            passengers={vehicle.passengers}
+            vehicle={vehicle}
             addToFavorites={addToFavorites}
             display={display}
           />
@@ -36,11 +30,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
       return planets.map((planet, index) => {
         return (
           <PlanetCard
-            name={planet.name}
-            terrain={planet.terrain}
-            population={planet.population}
-            climate={planet.climate}
-            residents={planet.residents}
+            planet={planet}
             addToFavorites={addToFavorites}
             display={display}
           />
@@ -51,10 +41,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
         if (favorite.type === 'people') {
           return (
             <PeopleCard
-              name={favorite.name}
-              homeworld={favorite.homeworld}
-              species={favorite.species}
-              homeworldPop={favorite.population}
+              person={favorite}
               addToFavorites={addToFavorites}
               display={display}
             />
@@ -62,10 +49,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
         } else if (favorite.type === 'vehicles') {
           return (
             <VehicleCard
-              name={favorite.name}
-              model={favorite.model}
-              vehicleClass={favorite.class}
-              passengers={favorite.passengers}
+              vehicle={favorite}
               addToFavorites={addToFavorites}
               display={display}
             />
@@ -73,11 +57,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
         } else {
           return (
             <PlanetCard
-              name={favorite.name}
-              terrain={favorite.terrain}
-              population={favorite.population}
-              climate={favorite.climate}
-              residents={favorite.residents}
+              planet={favorite}
               addToFavorites={addToFavorites}
               display={display}
             />

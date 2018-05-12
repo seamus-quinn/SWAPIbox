@@ -1,41 +1,40 @@
 import React from 'react';
 import './Cards.css'
 
-const PeopleCard = ({ name, homeworld, species, homeworldPop, addToFavorites, display }) => {
+const PeopleCard = ({ person, addToFavorites, display }) => {
   return (
     <div className='card people-card'>
-      <h1>{name}</h1>
-      <p>Homeworld: {homeworld}</p>
-      <p>Species: {species}</p>
-      <p>Homeworld Population: {homeworldPop}</p>
-      <button onClick={() => addToFavorites(name, display)}>Favorite</button>
+      <h1>{person.name}</h1>
+      <p>Homeworld: {person.homeworld}</p>
+      <p>Species: {person.species}</p>
+      <p>Homeworld Population: {person.homeworldPop}</p>
+      <button onClick={() => addToFavorites(person.name, display)}>Favorite</button>
     </div>
   )
 }
 
-const VehicleCard = ({name, model, vehicleClass, passengers, addToFavorites, display}) => {
+const VehicleCard = ({vehicle, addToFavorites, display}) => {
   return (
     <div className='card vehicleCard'>
-      <h1>{name}</h1>
-      <p>Model: {model}</p>
-      <p>Class: {vehicleClass}</p>
-      <p>Number of Passengers: {passengers}</p>
-      <button onClick={() => addToFavorites(name, display)}>Favorite</button>
+      <h1>{vehicle.name}</h1>
+      <p>Model: {vehicle.model}</p>
+      <p>Class: {vehicle.vehicleClass}</p>
+      <p>Number of Passengers: {vehicle.passengers}</p>
+      <button onClick={() => addToFavorites(vehicle.name, display)}>Favorite</button>
     </div>
   )
 }
 
-const PlanetCard = ({name, terrain, population, climate, addToFavorites, display, residents}) => {
-  const people = residents.map(resident => <p>{resident}</p>)
-  console.log(people)
+const PlanetCard = ({ planet, addToFavorites, display }) => {
+  const people = planet.residents.map(resident => <p>{resident}</p>)
   return (
     <div className='card planetCard'>
-      <h1>{name}</h1>
-      <p>Terrain: {terrain}</p>
-      <p>Population: {population}</p>
-      <p>Climate: {climate}</p>
+      <h1>{planet.name}</h1>
+      <p>Terrain: {planet.terrain}</p>
+      <p>Population: {planet.population}</p>
+      <p>Climate: {planet.climate}</p>
       <div>Residents: {people}</div>
-      <button onClick={() => addToFavorites(name, display)}>Favorite</button>
+      <button onClick={() => addToFavorites(planet.name, display)}>Favorite</button>
     </div>
   )
 }
