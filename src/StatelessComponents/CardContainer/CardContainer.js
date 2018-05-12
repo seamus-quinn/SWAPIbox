@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PeopleCard, VehicleCard, PlanetCard } from '../Cards/Cards'
 
 
-const CardContainer = ({ people, vehicles, planets, addToFavorites, display }) => {
+const CardContainer = ({ people, vehicles, planets, addToFavorites, display, favorites }) => {
   if (display === 'people') {
     return people.map((person, index) => {
       return (
@@ -41,6 +41,43 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display }) =
           display={display}
         />
       )
+    })
+  } else if (display === 'favorites') {
+    return favorites.map(favorite => {
+      if(favorite.type === 'people') {
+        return (
+          <PeopleCard
+            name={favorite.name}
+            homeworld={favorite.homeworld}
+            species={favorite.species}
+            homeworldPop={favorite.population}
+            addToFavorites={addToFavorites}
+            display={display}
+          />
+        )
+      } else if (favorite.type === 'vehicles') {
+        return (
+          <VehicleCard
+            name={favorite.name}
+            model={favorite.model}
+            vehicleClass={favorite.class}
+            passengers={favorite.passengers}
+            addToFavorites={addToFavorites}
+            display={display}
+          />
+        )
+      } else {
+        return (
+          <PlanetCard
+            name={favorite.name}
+            terrain={favorite.terrain}
+            population={favorite.population}
+            climate={favorite.climate}
+            addToFavorites={addToFavorites}
+            display={display}
+          />
+        )
+      }
     })
   } else {
     return( 
