@@ -1,8 +1,9 @@
 import React from 'react';
+import './Cards.css'
 
 const PeopleCard = ({ name, homeworld, species, homeworldPop, addToFavorites, display }) => {
   return (
-    <div>
+    <div className='card people-card'>
       <h1>{name}</h1>
       <p>Homeworld: {homeworld}</p>
       <p>Species: {species}</p>
@@ -14,7 +15,7 @@ const PeopleCard = ({ name, homeworld, species, homeworldPop, addToFavorites, di
 
 const VehicleCard = ({name, model, vehicleClass, passengers, addToFavorites, display}) => {
   return (
-    <div>
+    <div className='card vehicleCard'>
       <h1>{name}</h1>
       <p>Model: {model}</p>
       <p>Class: {vehicleClass}</p>
@@ -26,7 +27,7 @@ const VehicleCard = ({name, model, vehicleClass, passengers, addToFavorites, dis
 
 const PlanetCard = ({name, terrain, population, climate, addToFavorites, display}) => {
   return (
-    <div>
+    <div className='card planetCard'>
       <h1>{name}</h1>
       <p>Terrain: {terrain}</p>
       <p>Population: {population}</p>
