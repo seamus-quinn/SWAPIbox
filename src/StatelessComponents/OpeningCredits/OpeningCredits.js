@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import loadingGif from "../../images/loading.gif"
+import './OpeningCredits.css'
 
 const OpeningCredits = ({ openingCrawl }) => {
   if (openingCrawl === null) {
@@ -12,10 +13,12 @@ const OpeningCredits = ({ openingCrawl }) => {
 } else {
   
   return(
-    <div>
-      <p>{openingCrawl.openingText}</p>
-      <p>{openingCrawl.title}</p>
-      <p>{openingCrawl.releaseDate}</p>
+    <div className='opening-credits'>
+      <p className='marquee'>
+        <span>{openingCrawl.openingText}</span>
+        <span>{openingCrawl.title}</span>
+        <span>{openingCrawl.releaseDate}</span>
+      </p>    
     </div>
   )
 }

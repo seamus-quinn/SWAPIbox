@@ -96,7 +96,6 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">SWAPIbox :: Live Long and Prosper</h1>
         </header>
-        <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
         <Controls 
           favorites={this.state.favorites} 
           setPeopleData={this.setPeopleData}
@@ -112,6 +111,7 @@ class App extends Component {
           display={this.state.display}
           favorites={this.state.favorites}
         />
+        <OpeningCredits openingCrawl={this.state.openingCrawl} openingCrawlIndex={this.state.openingCrawlIndex} />
       </div>
     );
   }

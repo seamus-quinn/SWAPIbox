@@ -1,4 +1,6 @@
 .card {
   border: 2px solid #fff;
   width: 200px;
+  height: 100px;
+  background-color: #c29991;
 }
