@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import loadingGif from "../../images/loading.gif"
 
 const OpeningCredits = ({ openingCrawl }) => {
   if (openingCrawl === null) {
   return (
     <div>
-      <img src="../../images/loading.gif" />
+      <img src={loadingGif} />
     </div>
   )
 } else {

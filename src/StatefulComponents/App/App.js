@@ -40,9 +40,9 @@ class App extends Component {
     this.setState({ openingCrawl, isLoading: false })
   }
 
-  addToFavorites = (name) => {
-    const favorite = this.state.people.find(person => person.name === name)
-    console.log(favorite)
+  addToFavorites = (name, display) => {
+    console.log(this.state[display])
+    const favorite = this.state[display].find(thing => thing.name === name)
     const favorites = [...this.state.favorites, favorite]
     console.log(favorites)
     this.setState({ favorites })
