@@ -1,43 +1,44 @@
 import React, { Component } from 'react';
-import Card from '../Card/Card'
+// import Card from '../Card/Card'
 
 const CardContainer = ({ people, vehicles, planets, addToFavorites, display }) => {
   if (display === 'people') {
-    const peopleCards = people.map((person, index) => {
-      return <Card
-        name={person.name}
-        dataTwo={person.homeworld}
-        dataThree={person.species}
-        dataFour={person.population}
-        key={person.name}
-        addToFavorites={addToFavorites}
-      />
+    return people.map((person, index) => {
+      return (
+        <div>
+          <h1>{person.name}</h1>
+          <p>Homeworld: {person.homeworld}</p>
+          <p>Species: {person.species}</p>
+          <p>Homeworld Population: {person.population}</p>
+          <button onClick={() => addToFavorites(person.name, display)}>Favorite</button>
+        </div>
+      ) 
     })
-    return peopleCards
   } else if (display === 'vehicles') {
-    const vehicleCards = vehicles.map((vehicle, index) => {
-      return <Card
-        name={vehicle.name}
-        dataTwo={vehicle.model}
-        dataThree={vehicle.class}
-        dataFour={vehicle.passengers}
-        key={vehicle.name}
-        addToFavorites={addToFavorites}
-      />
+    return vehicles.map((vehicle, index) => {
+      return (
+        <div>
+          <h1>{vehicle.name}</h1>
+          <p>Model: {vehicle.model}</p>
+          <p>Class: {vehicle.class}</p>
+          <p>Number of Passengers: {vehicle.passengers}</p>
+          <button onClick={() => addToFavorites(vehicle.name, display)}>Favorite</button>
+        </div>
+      )
     })
-    return vehicleCards;
   } else if (display === 'planets') {
-    const planetCards = planets.map((planet, index) => {
-      return <Card
-        name={planet.name}
-        dataTwo={planet.terrain}
-        dataThree={planet.population}
-        dataFour={planet.climate}
-        key={planet.name}
-        addToFavorites={addToFavorites}
-      />
+    return planets.map((planet, index) => {
+      return (
+        <div>
+          <h1>{planet.name}</h1>
+          <p>Terrain: {planet.terrain}</p>
+          <p>Population: {planet.population}</p>
+          <p>Climate: {planet.climate}</p>
+          {/* <p>Residents: {...planet.residents}</p> */}
+          <button onClick={() => addToFavorites(planet.name, display)}>Favorite</button>
+        </div>
+      )
     })
-    return planetCards
   } else {
     return( 
       <p>Please select a Category</p>
