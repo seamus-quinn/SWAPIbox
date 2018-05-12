@@ -1,42 +1,45 @@
 import React, { Component } from 'react';
-// import Card from '../Card/Card'
+import { PeopleCard, VehicleCard, PlanetCard } from '../Cards/Cards'
+
 
 const CardContainer = ({ people, vehicles, planets, addToFavorites, display }) => {
   if (display === 'people') {
     return people.map((person, index) => {
       return (
-        <div>
-          <h1>{person.name}</h1>
-          <p>Homeworld: {person.homeworld}</p>
-          <p>Species: {person.species}</p>
-          <p>Homeworld Population: {person.population}</p>
-          <button onClick={() => addToFavorites(person.name, display)}>Favorite</button>
-        </div>
+        <PeopleCard
+          name={person.name}
+          homeworld={person.homeworld}
+          species={person.species}
+          homeworldPop={person.population}
+          addToFavorites={addToFavorites}
+          display={display}
+        />
       ) 
     })
   } else if (display === 'vehicles') {
     return vehicles.map((vehicle, index) => {
       return (
-        <div>
-          <h1>{vehicle.name}</h1>
-          <p>Model: {vehicle.model}</p>
-          <p>Class: {vehicle.class}</p>
-          <p>Number of Passengers: {vehicle.passengers}</p>
-          <button onClick={() => addToFavorites(vehicle.name, display)}>Favorite</button>
-        </div>
+        <VehicleCard 
+          name={vehicle.name}
+          model={vehicle.model}
+          vehicleClass={vehicle.class}
+          passengers={vehicle.passengers}
+          addToFavorites={addToFavorites}
+          display={display}
+        />
       )
     })
   } else if (display === 'planets') {
     return planets.map((planet, index) => {
       return (
-        <div>
-          <h1>{planet.name}</h1>
-          <p>Terrain: {planet.terrain}</p>
-          <p>Population: {planet.population}</p>
-          <p>Climate: {planet.climate}</p>
-          {/* <p>Residents: {...planet.residents}</p> */}
-          <button onClick={() => addToFavorites(planet.name, display)}>Favorite</button>
-        </div>
+        <PlanetCard
+          name={planet.name}
+          terrain={planet.terrain}
+          population={planet.population}
+          climate={planet.climate}
+          addToFavorites={addToFavorites}
+          display={display}
+        />
       )
     })
   } else {
