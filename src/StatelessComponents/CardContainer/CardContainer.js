@@ -40,6 +40,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
             terrain={planet.terrain}
             population={planet.population}
             climate={planet.climate}
+            residents={planet.residents}
             addToFavorites={addToFavorites}
             display={display}
           />
@@ -76,6 +77,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
               terrain={favorite.terrain}
               population={favorite.population}
               climate={favorite.climate}
+              residents={favorite.residents}
               addToFavorites={addToFavorites}
               display={display}
             />

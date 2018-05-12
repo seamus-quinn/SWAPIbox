@@ -25,14 +25,16 @@ const VehicleCard = ({name, model, vehicleClass, passengers, addToFavorites, dis
   )
 }
 
-const PlanetCard = ({name, terrain, population, climate, addToFavorites, display}) => {
+const PlanetCard = ({name, terrain, population, climate, addToFavorites, display, residents}) => {
+  const people = residents.map(resident => <p>{resident}</p>)
+  console.log(people)
   return (
     <div className='card planetCard'>
       <h1>{name}</h1>
       <p>Terrain: {terrain}</p>
       <p>Population: {population}</p>
       <p>Climate: {climate}</p>
-      {/* <p>Residents: {...residents}</p> */}
+      <div>Residents: {people}</div>
       <button onClick={() => addToFavorites(name, display)}>Favorite</button>
     </div>
   )
