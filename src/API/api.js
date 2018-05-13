@@ -77,6 +77,8 @@ const fetchResidents = async (array) => {
 export {
   fetchPeopleData,
   fetchHomeWorld,
+  fetchSpecies,
   fetchVehicleData,
-  fetchPlanetData
+  fetchPlanetData,
+  fetchResidents
 }
