@@ -66,7 +66,7 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
       })
     } else {
       return (
-        <p>Please select a Category</p>
+        <p className='default'>Please select a Category</p>
       )
     }
   }

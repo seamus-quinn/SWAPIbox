@@ -93,9 +93,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">SWAPIbox :: Live Long and Prosper</h1>
+          
         </header>
-        <Controls 
-          favorites={this.state.favorites} 
+        <Controls
+          favorites={this.state.favorites}
           setPeopleData={this.setPeopleData}
           setVehicleData={this.setVehicleData}
           setPlanetData={this.setPlanetData}

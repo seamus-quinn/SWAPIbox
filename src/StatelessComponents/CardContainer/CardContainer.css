@@ -1,6 +1,23 @@
 .card-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   overflow: auto;
+}
+
+.loading {
+  width: auto;
+  height: auto;
+  position: fixed;
+  margin: 40vh 37.5vw;
+}
+
+.default {
+  width: 800px;
+  height: 400px;
+  background-color: #c29991;
+  color: cornsilk;
+  font-size: 24px;
+  border-radius: 15px;
 }

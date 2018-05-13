@@ -1,8 +1,9 @@
 import React from 'react';
+import './Controls.css'
 
 const Controls = ({ favorites, setPeopleData, setVehicleData, setPlanetData, displayFavorites }) => {
   return(
-    <div>
+    <div className='controls'>
       <button onClick={setPeopleData}>PEOPLE</button>
       <button onClick={setPlanetData}>PLANETS</button>
       <button onClick={setVehicleData}>VEHICLES</button>
