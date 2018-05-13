@@ -6,18 +6,14 @@ import './OpeningCredits.css'
 const OpeningCredits = ({ openingCrawl }) => {
   if (openingCrawl === null) {
   return (
-    <div>
-      <img src={loadingGif} />
-    </div>
+      <img className='loading' src={loadingGif} />
   )
 } else {
   
   return(
     <div className='opening-credits'>
       <p className='marquee'>
-        <span>{openingCrawl.openingText}</span>
-        <span>{openingCrawl.title}</span>
-        <span>{openingCrawl.releaseDate}</span>
+        <span>{openingCrawl.openingText}<span>{openingCrawl.title}</span><span>{openingCrawl.releaseDate}</span></span>
       </p>    
     </div>
   )
