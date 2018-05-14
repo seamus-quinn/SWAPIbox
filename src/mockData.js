@@ -36,7 +36,7 @@ const mockPeopleData = {
       "url": "https://swapi.co/api/people/1/"
     }
   ]
-}
+};
 
 const mockHomeworldData = {
   "name": "Tatooine",
@@ -70,7 +70,7 @@ const mockHomeworldData = {
   "created": "2014-12-09T13:50:49.641000Z",
   "edited": "2014-12-21T20:48:04.175778Z",
   "url": "https://swapi.co/api/planets/1/"
-}
+};
 
 const mockPlanetData = {
   "count": 61,
@@ -101,7 +101,7 @@ const mockPlanetData = {
       "url": "https://swapi.co/api/planets/2/"
     }
   ]
-}
+};
 
 const mockVehiclesData = {
   "count": 39,
@@ -130,7 +130,7 @@ const mockVehiclesData = {
       "url": "https://swapi.co/api/vehicles/4/"
     }
   ]
-}
+};
 
 const mockSpeciesData = {
   "name": "Human",
@@ -192,7 +192,7 @@ const mockSpeciesData = {
   "created": "2014-12-10T13:52:11.567000Z",
   "edited": "2015-04-17T06:59:55.850671Z",
   "url": "https://swapi.co/api/species/1/"
-}
+};
 
 const mockResidents = [
   {
@@ -223,7 +223,7 @@ const mockResidents = [
     "edited": "2014-12-20T21:17:50.315000Z",
     "url": "https://swapi.co/api/people/5/"
   }
-]
+];
 
 export {
   mockPeopleData,
@@ -232,4 +232,4 @@ export {
   mockVehiclesData,
   mockSpeciesData,
   mockResidents
-}
+};
