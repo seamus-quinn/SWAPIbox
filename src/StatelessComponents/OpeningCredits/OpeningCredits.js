@@ -20,6 +20,10 @@ const OpeningCredits = ({ openingCrawl }) => {
 }
 }
 
+OpeningCredits.proptypes = {
+  openingCrawl: PropTypes.object
+}
+
 export default OpeningCredits;
 
 

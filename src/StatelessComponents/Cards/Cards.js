@@ -1,8 +1,6 @@
 import React from 'react';
 import './Cards.css'
-import rocket from '../../images/rocket.svg'
-import planet from '../../images/rocket.svg'
-
+import PropTypes from 'prop-types';
 
 const PeopleCard = ({ person, addToFavorites, display }) => {
   return (
@@ -20,7 +18,6 @@ const VehicleCard = ({vehicle, addToFavorites, display}) => {
   return (
     <div className='card vehicleCard'>
       <h1 className='card-header'>{vehicle.name}</h1>
-      <img src='../../images/rocket.svg' />
       <p>Model: {vehicle.model}</p>
       <p>Class: {vehicle.class}</p>
       <p>Number of Passengers: {vehicle.passengers}</p>
@@ -34,7 +31,6 @@ const PlanetCard = ({ planet, addToFavorites, display }) => {
   return (
     <div className='card planetCard'>
       <h1 className='card-header'>{planet.name}</h1>
-      <img src='../../images/stormtrooper.jpg' />
       <p>Terrain: {planet.terrain}</p>
       <p>Population: {planet.population}</p>
       <p>Climate: {planet.climate}</p>
@@ -42,6 +38,24 @@ const PlanetCard = ({ planet, addToFavorites, display }) => {
       <button onClick={() => addToFavorites(planet.name, display)}>Favorite</button>
     </div>
   )
+}
+
+PeopleCard.propTypes = {
+  people: PropTypes.array,
+  addToFavorites: PropTypes.func,
+  display: PropTypes.string
+}
+
+VehicleCard.propTypes = {
+  vehicles: PropTypes.array,
+  addToFavorites: PropTypes.func,
+  display: PropTypes.string
+}
+
+PlanetCard.propTypes = {
+  planets: PropTypes.array,
+  addToFavorites: PropTypes.func,
+  display: PropTypes.string
 }
 
 export {
