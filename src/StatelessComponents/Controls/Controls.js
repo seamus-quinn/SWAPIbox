@@ -1,5 +1,6 @@
 import React from 'react';
-import './Controls.css'
+import './Controls.css';
+import PropTypes from 'prop-types';
 
 const Controls = ({ favorites, setPeopleData, setVehicleData, setPlanetData, displayFavorites }) => {
   return(
@@ -10,6 +11,14 @@ const Controls = ({ favorites, setPeopleData, setVehicleData, setPlanetData, dis
       <button onClick={displayFavorites}>Favorites: <span>{favorites.length}</span></button>
     </div>
   )
+}
+
+Controls.proptypes = {
+  favorites: PropTypes.array,
+  setVehicleData: PropTypes.func,
+  setPlanetData: PropTypes.func,
+  setPeopleData: PropTypes.func,
+  displayFavorites: PropTypes.func
 }
 
 export default Controls;

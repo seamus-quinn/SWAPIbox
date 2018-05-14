@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { PeopleCard, VehicleCard, PlanetCard } from '../Cards/Cards'
+import PropTypes from 'prop-types'
 import './CardContainer.css'
 
 
@@ -76,6 +77,15 @@ const CardContainer = ({ people, vehicles, planets, addToFavorites, display, fav
       {cardCategories()}
     </div>
   )
+}
+
+CardContainer.proptypes = {
+  people: PropTypes.array,
+  vehicles: PropTypes.array,
+  planets: PropTypes.array,
+  addToFavorites: PropTypes.func,
+  display: PropTypes.string,
+  favorites: PropTypes.array
 }
 
 export default CardContainer;

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import filmsData from '../../data/filmsData'
 import './App.css';
 import OpeningCredits from '../../StatelessComponents/OpeningCredits/OpeningCredits';
 import Controls from '../../StatelessComponents/Controls/Controls';
 import CardContainer from '../../StatelessComponents/CardContainer/CardContainer';
-import { fetchPeopleData, fetchHomeworld, fetchVehicleData, fetchPlanetData } from '../../API/api';
+import { fetchPeopleData, fetchVehicleData, fetchPlanetData } from '../../API/api';
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +11,6 @@ class App extends Component {
     this.state = {
       openingCrawl: null,
       isLoading: true,
-      favorites: 0,
       people: [],
       favorites: [],
       vehicles: [],
