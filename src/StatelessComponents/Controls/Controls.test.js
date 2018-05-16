@@ -4,8 +4,23 @@ import Controls from './Controls'
 import { shallow } from 'enzyme';
 
 describe('Controls', () => {
-  it('should exist', () => {
-    let wrapper = shallow(<Controls />)
-    expect(wrapper).toBeDefined()
+
+  let wrapper;
+  let mockProps;
+
+  beforeEach(() => {
+    mockProps = {
+      favorites: [ {name: 'Ron', homePlanet: 'Great Briatin' } ],
+      setPeopleData: jest.fn(),
+      setVehicleData: jest.fn(),
+      setPlanetData: jest.fn(),
+      displayFavorites: jest.fn()
+    }
+    wrapper = shallow(<Controls />)
+  })
+
+  it('should exist match the snapshot', () => {
+
+    expect(wrapper).toMatchSnapshot();
   })
 })
